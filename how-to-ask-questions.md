@@ -85,10 +85,10 @@ issue/problem, for example:
 
 The old saying "a picture's worth 1000 words" rings true in this case.
 
-![pic ex](ssh_could_not_resolve_hostname.png)
+<!-- ![pic ex](ssh_could_not_resolve_hostname.png) -->
 
-![pic ex](scp_permission_denied.jpg)
+<!-- ![pic ex](scp_permission_denied.jpg) -->
 
-![pic ex](cut_list_of.png)
+<!-- ![pic ex](cut_list_of.png) -->
 
 
