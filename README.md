@@ -21,7 +21,7 @@ Module 0: [How to web search then ask questions](how-to-ask-questions.md)
 - Module 1: awk, sed regex. TODO 
 - Module 2: shell script, perm, flow, variables, arguments.
 - Module 3: Configuring build env, startup profiles.
-  - Module 4: Remote Operations, ssh keys, rsync.
+- Module 4: Remote Operations, ssh keys, rsync.
 - Module 5: Version Control, git branch, github.
 
 # CS305 outline
