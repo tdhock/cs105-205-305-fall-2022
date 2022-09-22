@@ -11,7 +11,7 @@ Module 0: [How to web search then ask questions](how-to-ask-questions.md)
 - Module 2: Files and Directories, cd, mv, ls, mkdir
 - Module 3: Commands and redirection, stdio, stderr, pipes
 - Module 4: Remote Access and Operations, ssh, scp, ftp, ping
-- Module 5: CLI editors, emacs + vim. TODO customizing for python and C.
+- Module 5: CLI editors, emacs + vim. 
 - Module 6: Version control, git init, commit, log.
 
 
@@ -21,8 +21,9 @@ Module 0: [How to web search then ask questions](how-to-ask-questions.md)
 - Module 1: awk, sed regex. TODO 
 - Module 2: shell script, perm, flow, variables, arguments.
 - Module 3: Configuring build env, startup profiles.
-- Module 4: Remote Operations, ssh keys, rsync.
+- Module 4: Remote Operations, ssh keys, rsync, TODO x forwarding.
 - Module 5: Version Control, git branch, github.
+- TODO Module 6: Customizing editors for python and C.
 
 # CS305 outline
 
@@ -32,3 +33,4 @@ Module 0: [How to web search then ask questions](how-to-ask-questions.md)
 - Module 3: cloud, digital ocean, AWS.
 - Module 4: shell scripting, arrays, cron.
 - Module 5: Version Control, git stash, github best practices.
+- Module 6: advanced regex.
