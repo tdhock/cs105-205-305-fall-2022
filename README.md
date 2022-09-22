@@ -17,13 +17,13 @@ Module 0: [How to web search then ask questions](how-to-ask-questions.md)
 
 The goal of Part I is to make sure you have paid close attention to the reading and videos as well as to the guided activities associated with the module. 
 
-    Part I of the Final Exam is timed with a limit of 10 minutes before attempts are auto-submitted on your behalf. 
+Part I of the Final Exam is timed with a limit of 10 minutes before attempts are auto-submitted on your behalf. 
 	
-    You will have 2 attempts at Part I of the Final Exam and you will be graded based on your last attempt. 
+You will have 2 attempts at Part I of the Final Exam and you will be graded based on your last attempt. 
 	
-    You must submit your final attempt before the deadline, or you will receive a 0 on the quiz.
+You must submit your final attempt before the deadline, or you will receive a 0 on the quiz.
 	
-    Quiz questions are pulled from a bank of questions, so if you take the quiz again, you may not necessarily see the same questions.
+Quiz questions are pulled from a bank of questions, so if you take the quiz again, you may not necessarily see the same questions.
 
 Part II of the exam will focus on assessing your ability to apply your
 knowledge to a series of tasks. It will involve reading text files on
