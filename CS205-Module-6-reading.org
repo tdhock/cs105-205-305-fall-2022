@@ -1,0 +1,227 @@
+CS205 Module 6: customizing your editor 
+
+The goal of this module is to teach you how to customize a text
+editor, for enhanced support when editing code in a specific
+programming language.
+- The editor we will use is emacs, a classic editor which allows
+  you to write/edit code without using the mouse.
+- The programming language we will use is Python, which is used in
+  several CS classes at NAU.
+
+** Install emacs
+
+- For windows or mac, [[https://www.gnu.org/software/emacs/download.html][Download and Install GNU Emacs]].
+- For Linux, use your package manager, for example on ubuntu, open a
+  terminal and type "snap install emacs" (newer version) or "apt
+  install emacs" (older version).
+
+If this is your first time ever using emacs, please type C-h t (type h
+while holding down control, then let go of control and type t) to open
+the emacs tutorial. Read through the entire tutorial and do all of the
+exercises, which will teach you the most important keyboard shortcuts
+for navigating and editing code. Keep re-doing the tutorial every day
+until you remember all of the keyboard shortcuts.
+
+** Try editing python code with default emacs interface
+
+In emacs, when editing a file with the py suffix, a default python
+code editing mode is activated.
+In emacs type C-x C-f test.py RET (hold down control and type x then
+f, then let go of control and type test.py, then type return).
+That should open a buffer called test.py, with a python mode-line: in
+grey near the bottom, -:--- test.py Top L1 (Python ElDoc) or similar.
+
+In the test.py buffer, type C-c C-p, and one of two things should happen:
+- if you don't have any python available, you should get an error
+  (python not found or similar), so skip to the next section to
+  install conda and python.
+- otherwise, if you do have python available, the command should split
+  the emacs frame, and open a new emacs window containing python
+  command prompt, something like below,
+
+#+begin_src
+Python 3.6.9 (default, Mar 15 2022, 13:55:28) 
+[GCC 8.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+#+end_src
+and with mode line in grey something like below:
+#+begin_src
+U:**- *Python* All L4 (Inferior Python Shell-Compile).
+#+end_src
+You can type python commands at the prompt, just like in a
+terminal. You can switch windows/buffers, from the test.py script to
+the command prompt, and back, via C-x o (type x while holding down
+control, then let go of control and type o). You can also use C-c C-z
+in the test.py script to go to the python command prompt. While in the
+test.py window/buffer, add some python code:
+
+#+begin_src python
+  miles_to_phoenix = 144
+  miles_per_hour = 75
+  hours_to_phoenix = miles_to_phoenix/miles_per_hour
+  print(hours_to_phoenix)
+#+end_src
+
+You can either type the code yourself, or paste/yank it into the emacs
+test.py buffer/window via C-y. After that you can send the test.py
+buffer/window to be evaluated on the python command prompt inside of
+emacs, via C-c C-c (if it worked, you should see the number of hours
+it takes to drive to Phoenix).
+
+Note that by default when you start a python command prompt inside of
+emacs, it uses whatever python version is given by the emacs variable
+=python-shell-interpreter=, which is by default "python3" on my
+system. That means it looks for a program named "python3" in the
+directories listed in the PATH environment variable. On my system I
+see the following output, which indicates that emacs is using
+/usr/bin/python3, which is Python version 3.6.9.
+
+#+begin_src 
+tdhock@maude-MacBookPro:~/teaching/cs105-205-305-fall-2022.wiki$ echo $PATH
+/home/tdhock/bin:/home/tdhock/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/emacs/current/usr/bin
+tdhock@maude-MacBookPro:~/teaching/cs105-205-305-fall-2022.wiki$ which python3
+/usr/bin/python3
+tdhock@maude-MacBookPro:~/teaching/cs105-205-305-fall-2022.wiki$ python3 --version
+Python 3.6.9
+#+end_src
+
+** Install conda, a python distribution
+
+If you want to use a different (perhaps more recent) version of
+python, you can [[https://docs.conda.io/en/latest/miniconda.html][download conda]], which provides a bunch of different
+versions of python.
+- After downloading, open a bash terminal and type "conda init bash"
+  which will hopefully edit the ~/.bashrc file.
+- If it says it modified your ~/.bash_profile, then look in that file
+  and copy the code to ~/.bashrc to get it to work (I had to do this
+  using git bash in emacs shell on windows).
+- After that, you should get a new command prompt, prefixed by (base)
+  as shown below:
+
+#+begin_src
+(base) tdhock@maude-MacBookPro:~/teaching/cs105-205-305-fall-2022.wiki$ 
+#+end_src
+
+In conda, base is the name of the default environment. An environment
+is a specific version of python and packages. You can create a new
+environment with a specific version of python via a command like:
+
+#+begin_src shell-script
+  conda create python=3.10 -n cs205 
+#+end_src
+
+When asked if you want to proceed to install the listed packages, type
+return to take the default answer (y/yes). After the command succeeds,
+you can activate your new environment and see the version of your new
+python via
+
+#+begin_src 
+(base) tdhock@maude-MacBookPro:~/teaching/cs105-205-305-fall-2022.wiki$ conda activate cs205
+(cs205) tdhock@maude-MacBookPro:~/teaching/cs105-205-305-fall-2022.wiki$ python --version
+Python 3.10.4
+(cs205) tdhock@maude-MacBookPro:~/teaching/cs105-205-305-fall-2022.wiki$ which python
+/home/tdhock/.local/share/r-miniconda/envs/cs205/bin/python
+#+end_src
+
+You can see the (cs205) prompt which indicates the name of the newly
+activated conda environment, and you can see that the new python is
+installed under the envs/cs205/bin directory.
+
+** Emacs conda package for using conda environments
+
+To get emacs to use the python version that conda installed, you need
+to install a special emacs package. To do that first you
+need to put the following in your ~/.emacs file (which contains
+user-specific commands to run on emacs startup) to tell it to download
+packages from the MELPA repository,
+
+#+BEGIN_SRC elisp
+  (require 'package)
+  (add-to-list 'package-archives
+	       '("melpa" . "https://melpa.org/packages/") t)
+  (package-initialize)
+#+END_SRC
+
+After putting the above in your ~/.emacs you need to restart emacs,
+then run M-x package-install RET conda RET (M-x means hold down the
+option/alt key and type x) to install the conda package for emacs.
+
+To tell emacs where to find my conda environments, I put the following
+in my ~/.emacs file:
+
+#+begin_src elisp
+  (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
+  (setq conda-env-home-directory conda-anaconda-home)
+#+end_src
+
+Make sure to change the path above from "~/miniconda3" to wherever you
+have installed conda (for example
+"/home/tdhock/.local/share/r-miniconda" in the examples above), then
+restart emacs. To find out where your conda is installed, you start an
+anaconda prompt, then type python, import os, os, which should print
+out the path of the os module in the anaconda base environment:
+
+#+begin_src
+(base) C:\>python
+Python 3.9.5 (default, May 18 2021, 14:42:02) [MSC v.1916 64 bit (AMD64)] :: Anaconda, Inc. on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import os
+>>> os
+<module 'os' from 'C:\\Users\\th798\\Miniconda3\\lib\\os.py'>
+>>>
+#+end_src
+
+The output above shows that conda is installed in "~/Miniconda3" on my
+system (the tilde means my home/user directory).
+
+After restarting emacs, you should be able to run M-x
+conda-env-activate RET cs205 RET to activate your conda
+environment. After that, if you run C-c C-p in the test.py buffer, you
+should see the Python 3.10 prompt:
+
+#+begin_src 
+Python 3.10.4 (main, Mar 31 2022, 08:41:55) [GCC 7.5.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+#+end_src
+
+** Emacs elpy package for enhanced python editing
+
+Emacs has better support for editing python code, if you install the
+elpy package. Run M-x package-install RET elpy RET to install the elpy
+package for emacs. Finally to tell emacs to use elpy with python
+code, put the following in your ~/.emacs file:
+
+#+begin_src elisp
+  (elpy-enable)
+#+end_src
+
+If you are asked to Automatically install RPC dependencies? Say Yes.
+
+Again you can use C-c C-z in the test.py window/buffer to get an
+interactive python shell, then there are some different keyboard
+shortcuts:
+- C-RET to send line and step,
+- C-c to send highlighted region.
+
+Try creating a new class via YASnippet menu -> python-mode ->
+Definitions -> class(parent). Type to replace text under highlight,
+then type TAB to advance highlight to next field. When you get to
+args, try typing several different arguments, separated by commas,
+like foo, bar, baz. You should see a new line of code created for each
+argument.
+
+** References
+
+- [[https://www.youtube.com/playlist?list=PLwc48KSH3D1OeAHFQhWpd8Fz8rLhTaD7t][My emacs and python screencasts show you how to install emacs and
+  configure it to work with python]].
+- [[https://elpy.readthedocs.io/en/latest/introduction.html#installation][Installation instructions for Elpy, which is a python IDE for emacs]].
+- [[https://www.emacswiki.org/emacs/PythonProgrammingInEmacs][PythonProgrammingInEmacs on the emacswiki has instructions for
+    setting up other emacs python IDEs]].
+
+See [[https://elpy.readthedocs.io/en/latest/ide.html]] for more elpy key
+commands (sending code from python code files to the interactive
+shell), and [[https://realpython.com/emacs-the-best-python-editor/]] for a
+nice tutorial about emacs and python.
+
