@@ -12,9 +12,8 @@ programming language.
 
 - For windows or mac, [[https://www.gnu.org/software/emacs/download.html][Download and Install GNU Emacs]].
 - For Linux, use your package manager, for example on ubuntu, open a
-  terminal and type "snap install emacs" (newer version) or "apt
-  install emacs" (older version).
-- You may need to run "snap install emacs --classic"
+  terminal and type =snap install emacs= (newer version) or =apt install emacs= (older version).
+- You may need to run =snap install emacs --classic=
 
 If this is your first time ever using emacs, please type C-h t (type h
 while holding down control, then let go of control and type t) to open
@@ -72,8 +71,8 @@ it takes to drive to Phoenix).
 
 Note that by default when you start a python command prompt inside of
 emacs, it uses whatever python version is given by the emacs variable
-=python-shell-interpreter=, which is by default "python3" on my
-system. That means it looks for a program named "python3" in the
+=python-shell-interpreter=, which is by default =python3= on my
+system. That means it looks for a program named =python3= in the
 directories listed in the PATH environment variable. On my system I
 see the following output, which indicates that emacs is using
 /usr/bin/python3, which is Python version 3.6.9.
@@ -95,12 +94,12 @@ versions of python.
 - When going through the Python installer, make sure to click the checkbox that automatically adds Python and conda
   to your path. The installer will give some warnings but you can ignore them.
 - If you don't add conda and Python to your path you can add them manually, please consult the web for how to do so.
-- After downloading, open a bash terminal and type "conda init bash"
-  which will hopefully edit the ~/.bashrc file.
-- If you don't add conda to your path, you will get `conda: command not found`. In this case just open the Anaconda command prompt 
-  and ignore .bash_profile and .bashrc.
-- If it says it modified your ~/.bash_profile, then look in that file
-  and copy the code to ~/.bashrc to get it to work (I had to do this
+- After downloading, open a bash terminal and type =conda init bash=
+  which will hopefully edit the =~/.bashrc= file.
+- If you don't add conda to your path, you will get =conda: command not found=. In this case just open the Anaconda command prompt 
+  and ignore =.bash_profile= and =.bashrc=.
+- If it says it modified your =~/.bash_profile=, then look in that file
+  and copy the code to =~/.bashrc= to get it to work (I had to do this
   using git bash in emacs shell on windows).
 - After that, you should get a new command prompt, prefixed by (base)
   as shown below:
@@ -138,7 +137,7 @@ installed under the envs/cs205/bin directory.
 
 To get emacs to use the python version that conda installed, you need
 to install a special emacs package. To do that first you
-need to put the following in your ~/.emacs file (which contains
+need to put the following in your =~/.emacs= file (which contains
 user-specific commands to run on emacs startup) to tell it to download
 packages from the MELPA repository,
 
@@ -149,13 +148,13 @@ packages from the MELPA repository,
   (package-initialize)
 #+END_SRC
 
-After putting the above in your ~/.emacs you need to restart emacs, and
+After putting the above in your =~/.emacs= you need to restart emacs, and
 run M-x package-list-packages. This should run an initialization.
 Then run M-x package-install RET conda RET (M-x means hold down the
 option/alt key and type x) to install the conda package for emacs.
 
 To tell emacs where to find my conda environments, I put the following
-in my ~/.emacs file:
+in my =~/.emacs= file:
 
 #+begin_src elisp
   (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
@@ -180,7 +179,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 #+end_src
 
-The output above shows that conda is installed in "~/Miniconda3" on my
+The output above shows that conda is installed in =~/Miniconda3= on my
 system (the tilde means my home/user directory).
 
 After restarting emacs, you should be able to run M-x
@@ -197,9 +196,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 ** Emacs elpy package for enhanced python editing
 
 Emacs has better support for editing python code, if you install the
-elpy package. Run M-x package-install RET elpy RET to install the elpy
+elpy package. Run =M-x package-install RET elpy RET= to install the elpy
 package for emacs. Finally to tell emacs to use elpy with python
-code, put the following in your ~/.emacs file:
+code, put the following in your =~/.emacs= file:
 
 #+begin_src elisp
   (elpy-enable)
