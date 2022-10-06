@@ -162,9 +162,9 @@ in my ~/.emacs file:
   (setq conda-env-home-directory conda-anaconda-home)
 #+end_src
 
-Make sure to change the path above from ="~/miniconda3"= to wherever you
+Make sure to change the path above from =~/miniconda3= to wherever you
 have installed conda (for example
-="~/.local/share/r-miniconda"= in the examples above), then
+=~/.local/share/r-miniconda= in the examples above), then
 restart emacs. Make sure your path only contains forward slashes ('/').
 To find out where your conda is installed, you start an
 anaconda prompt, then type python, import os, os, which should print
