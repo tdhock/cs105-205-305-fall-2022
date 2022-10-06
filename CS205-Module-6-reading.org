@@ -15,7 +15,7 @@ programming language.
   terminal and type =snap install emacs= (newer version) or =apt install emacs= (older version).
 - You may need to run =snap install emacs --classic=
 
-If this is your first time ever using emacs, please type C-h t (type h
+If this is your first time ever using emacs, please type =C-h t= (type h
 while holding down control, then let go of control and type t) to open
 the emacs tutorial. Read through the entire tutorial and do all of the
 exercises, which will teach you the most important keyboard shortcuts
@@ -26,12 +26,12 @@ until you remember all of the keyboard shortcuts.
 
 In emacs, when editing a file with the py suffix, a default python
 code editing mode is activated.
-In emacs type C-x C-f test.py RET (hold down control and type x then
+In emacs type =C-x C-f test.py RET= (hold down control and type x then
 f, then let go of control and type test.py, then type return).
 That should open a buffer called test.py, with a python mode-line: in
 grey near the bottom, -:--- test.py Top L1 (Python ElDoc) or similar.
 
-In the test.py buffer, type C-c C-p, and one of two things should happen:
+In the test.py buffer, type =C-c C-p=, and one of two things should happen:
 - if you don't have any python available, you should get an error
   (python not found or similar), so skip to the next section to
   install conda and python.
@@ -51,8 +51,8 @@ U:**- *Python* All L4 (Inferior Python Shell-Compile).
 #+end_src
 You can type python commands at the prompt, just like in a
 terminal. You can switch windows/buffers, from the test.py script to
-the command prompt, and back, via C-x o (type x while holding down
-control, then let go of control and type o). You can also use C-c C-z
+the command prompt, and back, via =C-x o= (type x while holding down
+control, then let go of control and type o). You can also use =C-c C-z=
 in the test.py script to go to the python command prompt. While in the
 test.py window/buffer, add some python code:
 
@@ -64,9 +64,9 @@ test.py window/buffer, add some python code:
 #+end_src
 
 You can either type the code yourself, or paste/yank it into the emacs
-test.py buffer/window via C-y. After that you can send the test.py
+test.py buffer/window via =C-y=. After that you can send the test.py
 buffer/window to be evaluated on the python command prompt inside of
-emacs, via C-c C-c (if it worked, you should see the number of hours
+emacs, via =C-c C-c= (if it worked, you should see the number of hours
 it takes to drive to Phoenix).
 
 Note that by default when you start a python command prompt inside of
@@ -149,8 +149,8 @@ packages from the MELPA repository,
 #+END_SRC
 
 After putting the above in your =~/.emacs= you need to restart emacs, and
-run M-x package-list-packages. This should run an initialization.
-Then run M-x package-install RET conda RET (M-x means hold down the
+run =M-x package-list-packages=. This should run an initialization.
+Then run =M-x package-install RET conda RET= (M-x means hold down the
 option/alt key and type x) to install the conda package for emacs.
 
 To tell emacs where to find my conda environments, I put the following
@@ -182,9 +182,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 The output above shows that conda is installed in =~/Miniconda3= on my
 system (the tilde means my home/user directory).
 
-After restarting emacs, you should be able to run M-x
-conda-env-activate RET cs205 RET to activate your conda
-environment. After that, if you run C-c C-p in the test.py buffer, you
+After restarting emacs, you should be able to run =M-x conda-env-activate RET cs205 RET= to activate your conda
+environment. After that, if you run =C-c C-p= in the test.py buffer, you
 should see the Python 3.10 prompt:
 
 #+begin_src 
@@ -206,11 +205,11 @@ code, put the following in your =~/.emacs= file:
 
 If you are asked to Automatically install RPC dependencies? Say Yes.
 
-Again you can use C-c C-z in the test.py window/buffer to get an
+Again you can use =C-c C-z= in the test.py window/buffer to get an
 interactive python shell, then there are some different keyboard
 shortcuts:
-- C-RET to send line and step,
-- C-c to send highlighted region.
+- =C-RET= to send line and step,
+- =C-c= to send highlighted region.
 
 Try creating a new class via YASnippet menu -> python-mode ->
 Definitions -> class(parent). Type to replace text under highlight,
