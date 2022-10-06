@@ -14,6 +14,7 @@ programming language.
 - For Linux, use your package manager, for example on ubuntu, open a
   terminal and type "snap install emacs" (newer version) or "apt
   install emacs" (older version).
+- You may need to run "snap install emacs --classic"
 
 If this is your first time ever using emacs, please type C-h t (type h
 while holding down control, then let go of control and type t) to open
@@ -91,8 +92,13 @@ Python 3.6.9
 If you want to use a different (perhaps more recent) version of
 python, you can [[https://docs.conda.io/en/latest/miniconda.html][download conda]], which provides a bunch of different
 versions of python.
+- When going through the Python installer, make sure to click the checkbox that automatically adds Python and conda
+  to your path. The installer will give some warnings but you can ignore them.
+- If you don't add conda and Python to your path you can add them manually, please consult the web for how to do so.
 - After downloading, open a bash terminal and type "conda init bash"
   which will hopefully edit the ~/.bashrc file.
+- If you don't add conda to your path, you will get `conda: command not found`. In this case just open the Anaconda command prompt 
+  and ignore .bash_profile and .bashrc.
 - If it says it modified your ~/.bash_profile, then look in that file
   and copy the code to ~/.bashrc to get it to work (I had to do this
   using git bash in emacs shell on windows).
@@ -143,8 +149,9 @@ packages from the MELPA repository,
   (package-initialize)
 #+END_SRC
 
-After putting the above in your ~/.emacs you need to restart emacs,
-then run M-x package-install RET conda RET (M-x means hold down the
+After putting the above in your ~/.emacs you need to restart emacs, and
+run M-x package-list-packages. This should run an initialization.
+Then run M-x package-install RET conda RET (M-x means hold down the
 option/alt key and type x) to install the conda package for emacs.
 
 To tell emacs where to find my conda environments, I put the following
@@ -158,7 +165,8 @@ in my ~/.emacs file:
 Make sure to change the path above from "~/miniconda3" to wherever you
 have installed conda (for example
 "/home/tdhock/.local/share/r-miniconda" in the examples above), then
-restart emacs. To find out where your conda is installed, you start an
+restart emacs. Make sure your path only contains forward slashes ('/').
+To find out where your conda is installed, you start an
 anaconda prompt, then type python, import os, os, which should print
 out the path of the os module in the anaconda base environment:
 
