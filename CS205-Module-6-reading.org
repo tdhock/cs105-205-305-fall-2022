@@ -180,7 +180,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 #+end_src
 
 The output above shows that conda is installed in =~/Miniconda3= on my
-system (the tilde means my home/user directory).
+system (the tilde means my home/user directory, and python prints out the absolute path using back slashes).
 
 After restarting emacs, you should be able to run =M-x conda-env-activate RET cs205 RET= to activate your conda
 environment. After that, if you run =C-c C-p= in the test.py buffer, you
