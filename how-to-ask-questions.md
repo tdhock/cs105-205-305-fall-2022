@@ -6,6 +6,12 @@ I know this seems like a lot work, but there are 200+ of you
 and lots of questions to answer. This will hopefully get you answers
 faster and save us all some frustration!
 
+## Are you in the right directory?
+
+By far the most frequent issue is a message such as "no such file or directory" or "file not found."
+Often the problem is that you are not in the right working directory.
+Fix by changing working directory (cd command).
+
 ## Before asking a question: do a web search
 
 Learning to solve your own problems as they come up is a very
