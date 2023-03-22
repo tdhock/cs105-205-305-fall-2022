@@ -15,7 +15,7 @@ programming language.
   terminal and type =snap install emacs= (newer version) or =apt install emacs= (older version).
 - You may need to run =snap install emacs --classic=
 
-If this is your first time ever using emacs, please type =C-h t= (type h
+If this is your first time ever using emacs, please open it and type =C-h t= (type h
 while holding down control, then let go of control and type t) to open
 the emacs tutorial. Read through the entire tutorial and do all of the
 exercises, which will teach you the most important keyboard shortcuts
